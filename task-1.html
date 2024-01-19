@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- Реализуйте класс Book, представляющий книгу, со следующими
+    свойствами и методами: Свойство title (название) - строка,
+    название книги. Свойство author (автор) - строка, имя автора
+    книги. Свойство pages (количество страниц) - число, количество
+    страниц в книге. Метод displayInfo() - выводит информацию о книге
+    (название, автор и количество страниц). -->
+    <script>
+      class Book {
+        constructor(title, author, pages) {
+          this.title = title;
+          this.author = author;
+          this.pages = pages;
+        }
+        displayInfo() {
+          const lastPage = this.pages % 10;
+          let lastLetter = '';
+          if (lastPage === 2 || lastPage === 3 || lastPage === 4) {
+            lastLetter = 'ы';
+          } else if (lastPage === 1) {
+            lastLetter = 'а';
+          }
+          console.log(
+            `Представлена книга "${this.title}" автора ${this.author}, объемом ${this.pages} страниц${lastLetter}`
+          );
+        }
+      }
+      const bookOne = new Book('Властелин колец', 'Д.Р.Толкиен', 861);
+      bookOne.displayInfo();
+      const bookTwo = new Book('Мать', 'А.М.Горький', 342);
+      bookTwo.displayInfo();
+    </script>
+  </body>
+</html>
