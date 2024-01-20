@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- Создать класс "Телефонная книга" с методами для добавления,
+    удаления и поиска контактов по имени или номеру телефона. 
+    Пример использования: let phonebook = new Phonebook();
+    phonebook.addContact("Иванов", "123-45-67");
+    phonebook.addContact("Петров", "987-65-43");
+    console.log(phonebook.findContactByName("Иванов")); // { name:
+    "Иванов", phone: "123-45-67" }
+    console.log(phonebook.findContactByPhone("987-65-43")); // { name:
+    "Петров", phone: "987-65-43" } phonebook.deleteContact("Иванов");
+    console.log(phonebook.contacts); // [{ name: "Петров", phone:
+    "987-65-43" }] -->
+    <script>
+      class Phonebook {
+        constructor() {
+          this.liste = [];
+        }
+        contacts() {
+          this.liste.forEach((el) => {
+            console.log(
+              `name: ${el.nameUser}, phone: ${el.phoneUser}`
+            );
+          });
+        }
+
+        addContact(nameUser, phoneUser) {
+          const user = { nameUser: nameUser, phoneUser: phoneUser };
+          this.liste.push(user);
+        }
+
+        findContactByName(nameUser) {
+          this.liste.forEach((el) => {
+            if (el.nameUser === nameUser) {
+              console.log(
+                `name: ${nameUser}, phone: ${el.phoneUser}`
+              );
+            }
+          });
+        }
+
+        findContactByPhone(phoneUser) {
+          this.liste.forEach((el) => {
+            if (el.phoneUser === phoneUser) {
+              console.log(
+                `name: ${el.nameUser}, phone: ${phoneUser}`
+              );
+            }
+          });
+        }
+        deleteContact(nameUser) {
+          for (let i = this.liste.length - 1; i >= 0; --i) {
+            if (this.liste[i].nameUser === nameUser) {
+              this.liste.splice(i, 1);
+            }
+          }
+        }
+      }
+
+      let phonebook = new Phonebook();
+
+      phonebook.addContact('Иванов', '123-45-67');
+      phonebook.addContact('Петров', '987-65-43');
+      console.log('Находим по фамилии');
+      phonebook.findContactByName('Иванов');
+      console.log('Находим по номеру телефона');
+      phonebook.findContactByPhone('987-65-43');
+      console.log('Список контактов');
+      phonebook.contacts();
+      console.log('Список контактов после удаления');
+      phonebook.deleteContact('Иванов');
+      phonebook.contacts();
+    </script>
+  </body>
+</html>
